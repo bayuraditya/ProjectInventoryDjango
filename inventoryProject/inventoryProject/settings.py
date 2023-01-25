@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'rest_framework',
+    'inventories'
 ]
 
 REST_FRAMEWORK = {
@@ -84,7 +85,7 @@ WSGI_APPLICATION = 'inventoryProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'inventory_db',
+        'NAME': 'projectInventory',
         'USER' : 'root',
         'PASSWORD' : '',
         'HOST' : 'localhost',
