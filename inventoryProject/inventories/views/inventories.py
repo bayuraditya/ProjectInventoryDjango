@@ -3,8 +3,10 @@ from rest_framework.views import APIView
 from inventories.models import Inventories
 
 from inventories.serializer import InventoriesSerializer, InventoriesShowSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class InventoriesList(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         
         inventoriesObj = Inventories.objects.all()
@@ -53,7 +55,7 @@ class InventoriesList(APIView):
 
 
 class InventoryDetail(APIView):
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
         
         inventoryObj = Inventories.objects.filter(id=id).first()

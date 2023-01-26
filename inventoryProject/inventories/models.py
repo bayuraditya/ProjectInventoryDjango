@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
-from django.utils.timezone import now
+from datetime import datetime
+
 # Create your models here.
 
 class Category(models.Model):
@@ -34,7 +35,7 @@ class Staff(models.Model):
 class MaintenanceInventories(models.Model):
     id = models.IntegerField(primary_key=True, unique=True, null=False)
     inventory = models.ForeignKey(Inventories, on_delete=models.CASCADE)
-    maintenanceDate = models.CharField(max_length=100, null=False, blank=False)
+    maintenanceDate = models.DateTimeField( blank=False)
     maintenanceVendor = models.CharField(max_length=100, null=False, blank=False)
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     

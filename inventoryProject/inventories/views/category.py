@@ -3,8 +3,10 @@ from rest_framework.views import APIView
 from inventories.models import Category
 
 from inventories.serializer import CategorySerializer
+from rest_framework.permissions import IsAuthenticated
 
 class CategoryList(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         
         categoryObj = Category.objects.all()
@@ -48,7 +50,7 @@ class CategoryList(APIView):
 
 
 class CategoryDetail(APIView):
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
         
         categoryObj = Category.objects.filter(id=id).first()

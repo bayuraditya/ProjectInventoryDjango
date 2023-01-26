@@ -3,8 +3,11 @@ from rest_framework.views import APIView
 from inventories.models import MaintenanceInventories
 
 from inventories.serializer import MaintenanceInventoriesSerializer, MaintenanceInventoriesShowSerializer
+from rest_framework.permissions import IsAuthenticated
 
+    
 class MaintenanceInventoriesList(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         
         maintenanceInventoriesObj = MaintenanceInventories.objects.all()
@@ -52,7 +55,7 @@ class MaintenanceInventoriesList(APIView):
 
 
 class MaintenanceInventoryDetail(APIView):
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
         
         maintenanceInventoryObj = MaintenanceInventories.objects.filter(id=id).first()

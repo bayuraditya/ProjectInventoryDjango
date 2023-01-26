@@ -3,8 +3,10 @@ from rest_framework.views import APIView
 from inventories.models import Staff
 
 from inventories.serializer import StaffSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class StaffList(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         
         staffObj = Staff.objects.all()
@@ -48,7 +50,7 @@ class StaffList(APIView):
 
 
 class StaffDetail(APIView):
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
         
         staffObj = Staff.objects.filter(id=id).first()

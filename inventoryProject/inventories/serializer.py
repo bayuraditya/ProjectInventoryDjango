@@ -67,9 +67,9 @@ class MaintenanceInventoriesSerializer(serializers.ModelSerializer):
     
 class MaintenanceInventoriesShowSerializer(serializers.ModelSerializer):
      
-    inventory = InventoriesSerializer()
+    inventory = InventoriesShowSerializer()
     staff = StaffSerializer()
-    
+
     class Meta:
         model = MaintenanceInventories
         fields = (
