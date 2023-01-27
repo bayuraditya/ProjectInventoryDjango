@@ -35,7 +35,7 @@ class Staff(models.Model):
 class MaintenanceInventories(models.Model):
     id = models.IntegerField(primary_key=True, unique=True, null=False)
     inventory = models.ForeignKey(Inventories, on_delete=models.CASCADE)
-    maintenanceDate = models.DateTimeField( blank=False)
+    maintenanceDate = models.DateField( blank=False)
     maintenanceVendor = models.CharField(max_length=100, null=False, blank=False)
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     
