@@ -15,4 +15,5 @@ urlpatterns = [
     path('maintenanceInventories', views.maintenanceInventories.MaintenanceInventoriesList.as_view()),
     path('maintenanceInventory/<id>', views.maintenanceInventories.MaintenanceInventoryDetail.as_view()),
   
+
 ]

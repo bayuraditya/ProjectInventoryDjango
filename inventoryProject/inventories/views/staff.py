@@ -2,16 +2,16 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from inventories.models import Staff
 
-from inventories.serializer import StaffSerializer
-from rest_framework.permissions import IsAuthenticated
+from inventories.serializer import StaffSerializer, StaffDetailSerializer
+# from rest_framework.permissions import IsAuthenticated
 
 class StaffList(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self, request):
         
         staffObj = Staff.objects.all()
         
-        staffSerializer = StaffSerializer(staffObj, many=True)
+        staffSerializer = StaffDetailSerializer(staffObj, many=True)
         
         return JsonResponse({
             "error": False,
@@ -50,12 +50,12 @@ class StaffList(APIView):
 
 
 class StaffDetail(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self, request, id):
         
         staffObj = Staff.objects.filter(id=id).first()
         
-        staffSerializer = StaffSerializer(staffObj)
+        staffSerializer = StaffDetailSerializer(staffObj)
         
         return JsonResponse({
             "error": False,

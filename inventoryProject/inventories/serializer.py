@@ -10,17 +10,7 @@ class CategorySerializer(serializers.ModelSerializer):
             'id',
             'name'
         )
-        
-class StaffSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Staff
-        fields = (
-            'id',
-            'staffName',
-            'staffPosition'
-        )
-        
+
 class InventoriesSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -35,6 +25,40 @@ class InventoriesSerializer(serializers.ModelSerializer):
             'purchaseYear',
             'category'
         )
+
+      # 
+class MaintenanceInventoriesDetailSerializer(serializers.ModelSerializer):
+    inventory = InventoriesSerializer()
+    class Meta:
+        model = MaintenanceInventories
+        fields = ['inventory']
+#   
+
+# 
+class StaffDetailSerializer(serializers.ModelSerializer):
+    maintenanceInventories = MaintenanceInventoriesDetailSerializer(many=True, source='maintenance_staff')
+    
+    class Meta:
+        model = Staff
+        fields = (
+            'id',
+            'staffName',
+            'staffPosition',
+            'maintenanceInventories'
+        )
+#   
+
+class StaffSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Staff
+        fields = (
+            'id',
+            'staffName',
+            'staffPosition'
+        )
+  
+
     
 class InventoriesShowSerializer(serializers.ModelSerializer):
      
@@ -79,4 +103,4 @@ class MaintenanceInventoriesShowSerializer(serializers.ModelSerializer):
             'inventory',
             'staff'
         )
-    
+
