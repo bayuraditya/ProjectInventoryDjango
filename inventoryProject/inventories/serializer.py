@@ -31,8 +31,11 @@ class MaintenanceInventoriesDetailSerializer(serializers.ModelSerializer):
     inventory = InventoriesSerializer()
     class Meta:
         model = MaintenanceInventories
-        fields = ['inventory']
-#   
+        # fields = ['inventory']
+        fields = (
+            'inventory',
+            'maintenanceDate'
+        )
 
 # 
 class StaffDetailSerializer(serializers.ModelSerializer):
